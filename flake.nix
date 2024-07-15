@@ -12,7 +12,7 @@
       let
         pkgs = import nixpkgs {
           inherit system;
-          overlays = [ rust-overlay.overlays.default ];
+          # overlays = [ rust-overlay.overlays.default ];
           # system = "x86_64-linux";
         };
       in
@@ -31,25 +31,9 @@
               pkgs.protobuf
               pkgs.trunk
               pkgs.just
-              pkgs.leptosfmt
               pkgs.nixpkgs-fmt
               pkgs.tailwindcss
-              pkgs.wrangler
-              # pkgs.nodePackages.daisyui
-              (pkgs.rust-bin.nightly."2024-02-01".default.override {
-                extensions = [
-                  "clippy"
-                  "llvm-tools-preview"
-                  "rust-analyzer"
-                  "rust-src"
-                  "rustfmt"
-                ];
-                targets = [
-                  "wasm32-unknown-unknown"
-                  "x86_64-unknown-linux-musl"
-                  "x86_64-unknown-linux-gnu"
-                ];
-              })
+              pkgs.nodejs
             ];
           };
       }
